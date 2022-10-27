@@ -1,0 +1,36 @@
+<h3>por región {{regionActiva | titlecase}}</h3>
+<hr>
+
+<h5>Selecciona una región</h5>
+
+<div class="row">
+    <div class="col">
+        <button *ngFor="let region of regiones"
+                class="btn btn-outline-primary me-1"
+                (click)="activarRegion(region)"
+                [ngClass]="getClassActive( region )">
+                {{region}}
+            </button>
+            <!-- [class.active]="region === regionActiva ? 'active' : '' " -->
+            <!-- [ngClass]="{
+                                condicion uno,
+                                condicion dos,
+                                etc...
+                            }"> 
+            -->
+            <!-- [class]="(region === regionActiva) ? 'active' : '' " -->
+            <!-- [ngClass]="region === regionActiva ? 'active' : '' " -->
+    </div>
+</div>
+
+<hr>
+
+<div class="alert" *ngIf="loading">
+    Cargando...
+</div>
+
+<div class="row" *ngIf="paises.length > 0">
+    <div class="col">
+        <app-tabla [paises]="paises"></app-tabla>
+    </div>
+</div>
